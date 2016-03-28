@@ -4,16 +4,17 @@ public class PhotonAckServer : ApplicationBase
 {
     protected override PeerBase CreatePeer(InitRequest initRequest)
     {
-        throw new System.NotImplementedException();
+        return new PhotonAckPeer(initRequest);
     }
 
     protected override void Setup()
     {
-        throw new System.NotImplementedException();
+        PhotonAckGame.Instance = new PhotonAckGame();
+        PhotonAckGame.Instance.Startup();
     }
 
     protected override void TearDown()
     {
-        throw new System.NotImplementedException();
+        PhotonAckGame.Instance.Shutdown();
     }
 }

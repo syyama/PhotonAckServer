@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9ECC71DA-A05B-427A-AFB0-181C508564C6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PhotonAckServer</RootNamespace>
     <AssemblyName>PhotonAckServer</AssemblyName>
@@ -31,15 +31,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExitGamesLibs">
-      <HintPath>E:\Dev\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\ExitGamesLibs.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Dev\Photon-OnPremise-Server-SDK_v4-0-28-11221\lib\ExitGamesLibs.dll</HintPath>
     </Reference>
     <Reference Include="Photon.SocketServer">
-      <HintPath>E:\Dev\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\Photon.SocketServer.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Dev\Photon-OnPremise-Server-SDK_v4-0-28-11221\lib\Photon.SocketServer.dll</HintPath>
     </Reference>
     <Reference Include="PhotonHostRuntimeInterfaces">
-      <HintPath>E:\Dev\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Dev\Photon-OnPremise-Server-SDK_v4-0-28-11221\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
@@ -51,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PhotonAckEventType.cs" />
+    <Compile Include="PhotonAckGame.cs" />
     <Compile Include="PhotonAckPeer.cs" />
     <Compile Include="PhotonAckResponseTypes.cs" />
     <Compile Include="PhotonAckServer.cs" />
