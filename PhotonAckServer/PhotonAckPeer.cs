@@ -3,7 +3,7 @@ using PhotonHostRuntimeInterfaces;
 
 using System.Collections.Generic;
 
-class PhotonAckPeer : ClientPeer
+class PhotonAckPeer : PeerBase
 {
     // note that we use long.MinValue rather than zero. Signed integer values have a negative
     // minimum and positive maximum. Starting at zero divides the possible range of IDs in half,
@@ -13,7 +13,7 @@ class PhotonAckPeer : ClientPeer
 
     public long PlayerID;
 
-    public PhotonAckPeer(InitRequest initRequest) : base(initRequest)
+    public PhotonAckPeer(IRpcProtocol protocol, IPhotonPeer unmanagedPeer) : base(protocol, unmanagedPeer)
     {
         lock(lockPlayerID)
         {

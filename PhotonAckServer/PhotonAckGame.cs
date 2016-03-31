@@ -6,23 +6,23 @@ public class PhotonAckGame
 {
     public static PhotonAckGame Instance;
 
-    public List<ClientPeer> Connections;
+    public List<PeerBase> Connections;
 
     public void Startup()
     {
-        Connections = new List<ClientPeer>();
+        Connections = new List<PeerBase>();
     }
 
     public void Shutdown()
     {
         // kick out any players still on the server before shutting down
-        foreach(ClientPeer peer in Connections)
+        foreach(PeerBase peer in Connections)
         {
             peer.Disconnect();
         }
     }
 
-    public void PeerConnected(ClientPeer peer)
+    public void PeerConnected(PeerBase peer)
     {
         lock(Connections)
         {
@@ -30,7 +30,7 @@ public class PhotonAckGame
         }
     }
 
-    public void PeerDisconnected(ClientPeer peer)
+    public void PeerDisconnected(PeerBase peer)
     {
         lock(Connections)
         {
@@ -38,7 +38,7 @@ public class PhotonAckGame
         }
     }
 
-    public void OnOperationRequest(ClientPeer src, OperationRequest request, SendParameters sendParams)
+    public void OnOperationRequest(PeerBase src, OperationRequest request, SendParameters sendParams)
     {
         // send ack to peer
         src.SendOperationResponse(new OperationResponse((byte)PhotonAckResponseTypes.Ack), sendParams);
